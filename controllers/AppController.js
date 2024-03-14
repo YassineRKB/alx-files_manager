@@ -6,10 +6,11 @@ class AppController {
   static getStatus(_req, res) {
     if (redisClient.isAlive() && dbClient.isAlive()) {
       res.json(
-        { redis: true, db: true }
-        );
+        { redis: true, db: true },
+      );
     }
   }
+
   static async getStats(_req, res) {
     const files = await dbClient.nbFiles();
     const users = await dbClient.nbUsers();
